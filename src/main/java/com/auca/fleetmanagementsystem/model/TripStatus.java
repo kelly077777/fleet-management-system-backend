@@ -1,5 +1,8 @@
 package com.auca.fleetmanagementsystem.model;
 
-public class TripStatus {
-    
+public enum TripStatus {
+    REQUESTED,
+    EN_ROUTE,
+    ARRIVED,
+    ABORTED
 }
