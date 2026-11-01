@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController 
 @RequestMapping ("/api/drivers")
@@ -66,5 +67,9 @@ public class DriverController {
         }else {
             return new ResponseEntity<>(message,HttpStatus.NOT_FOUND);
         }
+    }
+    @GetMapping ("/by-license-class")
+    public ResponseEntity<List<Driver>> getDriversByLicenseClass(@RequestParam String name){
+        return new ResponseEntity<>(driverService.getDriversByLicenseClass(name), HttpStatus.OK);
     }
 }

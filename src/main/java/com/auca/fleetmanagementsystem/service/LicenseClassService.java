@@ -47,5 +47,8 @@ public class LicenseClassService {
         licenseClassRepository.deleteById(id);
         return "License class deleted successfully";
     }
+    public List<LicenseClass> getUnusedLicenseClasses(){
+        return licenseClassRepository.findUnusedLicenseClasses();
+    }
 
 }

@@ -65,4 +65,8 @@ public class LicenseClassController {
 
         }
     }
+    @GetMapping ("/unused")
+    public ResponseEntity<List<LicenseClass>> getUnusedLicenseClasses(){
+        return new ResponseEntity<>(licenseClassService.getUnusedLicenseClasses(), HttpStatus.OK);
+    }
 }

@@ -76,5 +76,13 @@ public class CustomerController {
     public ResponseEntity<List<Customer>> getCustomersByLastName(@RequestParam String lastName){
         return new ResponseEntity<>(customerService.getCustomersByLastName(lastName), HttpStatus.OK);
     }
-
+    @GetMapping ("/of-driver/{driverId}")
+    public ResponseEntity<?> getCustomersOfDriver(@PathVariable UUID driverId){
+        Optional<List<Customer>> customers = customerService.getCustomersOfDriver(driverId);
+        if (customers.isPresent()){
+            return new ResponseEntity<>(customers.get(), HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>("The driver with that id does not exist", HttpStatus.NOT_FOUND);
+        }
+    }
 }

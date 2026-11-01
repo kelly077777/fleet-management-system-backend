@@ -5,13 +5,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import com.auca.fleetmanagementsystem.repository.DriverRepository;
 
 
 @Service 
 public class CustomerService {
     private final CustomerRepository customerRepository;
-    public CustomerService(CustomerRepository customerRepository){
+    private final DriverRepository driverRepository;
+    public CustomerService(CustomerRepository customerRepository, DriverRepository driverRepository){
         this.customerRepository = customerRepository;
+        this.driverRepository = driverRepository;
     }
 
     public String saveCustomer(Customer customer) {
@@ -55,6 +58,12 @@ public class CustomerService {
     }
     public List<Customer> getCustomersByLastName(String lastName){
         return customerRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+    }
+    public Optional<List<Customer>> getCustomersOfDriver(UUID driverId){
+        if (!driverRepository.existsById(driverId)){
+            return Optional.empty();
+        }
+        return Optional.of(customerRepository.findCustomersOfDriver(driverId));
     }
     
 }

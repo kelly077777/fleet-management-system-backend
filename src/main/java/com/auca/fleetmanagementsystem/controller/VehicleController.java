@@ -63,5 +63,9 @@ public class VehicleController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping ("/free")
+    public ResponseEntity<List<Vehicle>> getFreeVehicles(){
+        return new ResponseEntity<>(vehicleService.getFreeVehicles(), HttpStatus.OK);
+    }
 
 }

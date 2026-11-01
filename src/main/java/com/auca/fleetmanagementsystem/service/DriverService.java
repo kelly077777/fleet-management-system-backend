@@ -50,4 +50,7 @@ public class DriverService {
         driverRepository.deleteById(id);
         return "Driver deleted successfully";
     }
+    public List<Driver> getDriversByLicenseClass(String name){
+        return driverRepository.findDriversByLicenseClassName(name);
+    }
 }

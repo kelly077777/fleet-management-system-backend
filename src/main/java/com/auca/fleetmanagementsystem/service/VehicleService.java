@@ -49,5 +49,8 @@ public class VehicleService {
         vehicleRepository.deleteById(id);
         return "Vehicle deleted successfully";
     }
-    
+    public List<Vehicle> getFreeVehicles(){
+        return vehicleRepository.findFreeVehicles();
+
+    }
 }
