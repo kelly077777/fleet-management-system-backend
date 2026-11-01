@@ -2,10 +2,11 @@ package com.auca.fleetmanagementsystem.service;
 import com.auca.fleetmanagementsystem.model.Trip;
 import com.auca.fleetmanagementsystem.repository.TripRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import com.auca.fleetmanagementsystem.model.TripStatus;
+import java.time.LocalDate;
 
 @Service 
 
@@ -53,4 +54,10 @@ public class TripService {
         return "Trip deleted successfully";
     }
     
+    public List<Trip> getTripsByStatus(TripStatus status) {
+        return tripRepository.findByStatusOrderByTripDateAsc(status);
+    }
+    public List<Trip> getTripsBetween(LocalDate start, LocalDate end){
+        return tripRepository.findByTripDateBetweenOrderByTripDateAsc(start, end);
+    }
 }

@@ -41,6 +41,11 @@ public class LicenseClassController {
             return new ResponseEntity<>("The license class with that id does not exist", HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<LicenseClass>> getAllLicenseClasses(){
+        return new ResponseEntity<>(licenseClassService.getAllLicenseClasses(), HttpStatus.OK);
+    }
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateLicenseClass(@PathVariable UUID id, @RequestBody LicenseClass licenseClass){
         String message = licenseClassService.updateLicenseClass(id, licenseClass);

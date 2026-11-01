@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController 
 @RequestMapping("/api/customers")
@@ -71,4 +72,9 @@ public class CustomerController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/by-last-name")
+    public ResponseEntity<List<Customer>> getCustomersByLastName(@RequestParam String lastName){
+        return new ResponseEntity<>(customerService.getCustomersByLastName(lastName), HttpStatus.OK);
+    }
+
 }

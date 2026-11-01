@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import com.auca.fleetmanagementsystem.model.TripStatus;
+import org.springframework.web.bind.annotation.RequestParam;
+import java.time.LocalDate;
 
 @RestController 
 @RequestMapping ("/api/trips")
@@ -63,4 +66,15 @@ public class TripController {
             return new ResponseEntity<>(message,HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping ("/by-status")
+    public ResponseEntity<List<Trip>> getTripsByStatus(@RequestParam TripStatus status){
+        return new ResponseEntity<>(tripService.getTripsByStatus(status), HttpStatus.OK);
+    }
+    @GetMapping ("/between")
+    public ResponseEntity<List<Trip>> getTripsBetween(@RequestParam String start,@RequestParam String end){
+        LocalDate startDate = LocalDate.parse(start);
+        LocalDate endDate = LocalDate.parse(end);
+        return new ResponseEntity<>(tripService.getTripsBetween(startDate, endDate), HttpStatus.OK );
+    }
+
 }
