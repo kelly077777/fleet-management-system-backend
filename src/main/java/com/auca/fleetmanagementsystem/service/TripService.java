@@ -7,13 +7,16 @@ import java.util.Optional;
 import java.util.UUID;
 import com.auca.fleetmanagementsystem.model.TripStatus;
 import java.time.LocalDate;
+import com.auca.fleetmanagementsystem.repository.TripExpenseRepository;
 
 @Service 
 
 public class TripService {
     private final TripRepository tripRepository;
-    public TripService(TripRepository tripRepository){
+    private final TripExpenseRepository tripExpenseRepository;
+    public TripService(TripRepository tripRepository, TripExpenseRepository tripExpenseRepository){
         this.tripRepository = tripRepository;
+        this.tripExpenseRepository = tripExpenseRepository;
     }
 
     public String saveTrip(Trip trip){
@@ -54,8 +57,12 @@ public class TripService {
     }
 
     public String deleteTrip(UUID id){
-        if (!tripRepository.existsById(id)){
+        Optional<Trip> existing = tripRepository.findById(id);
+        if (existing.isEmpty()){
             return "The trip with that id does not exist";
+        }
+        if (tripExpenseRepository.existsByTrip(existing.get())){
+            return "That trip has trip expenses, delete them first";
         }
         tripRepository.deleteById(id);
         return "Trip deleted successfully";

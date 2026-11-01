@@ -70,6 +70,8 @@ public class TripController {
         String message = tripService.deleteTrip(id);
         if (message.equals("Trip deleted successfully")){
             return new ResponseEntity<>(message, HttpStatus.OK);
+        }else if (message.equals("That trip has trip expenses, delete them first")){
+            return new ResponseEntity<>(message,HttpStatus.CONFLICT);
         }else {
             return new ResponseEntity<>(message,HttpStatus.NOT_FOUND);
         }
