@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import java.util.List;
+import com.auca.fleetmanagementsystem.model.Vehicle;
 
 public interface DriverRepository extends JpaRepository<Driver, UUID> {
     @Query("""
@@ -12,4 +13,5 @@ public interface DriverRepository extends JpaRepository<Driver, UUID> {
         JOIN d.licenseClasses l
         WHERE LOWER(l.name) = LOWER(:name)""")
     List<Driver> findDriversByLicenseClassName(@Param("name") String name);
+    boolean existsByVehicle(Vehicle vehicle);
 }

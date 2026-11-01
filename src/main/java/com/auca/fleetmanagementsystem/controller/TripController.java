@@ -17,6 +17,7 @@ import java.util.UUID;
 import com.auca.fleetmanagementsystem.model.TripStatus;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 @RestController 
 @RequestMapping ("/api/trips")
@@ -29,7 +30,14 @@ public class TripController {
     @PostMapping("/save")
     public ResponseEntity<String> saveTrip(@RequestBody Trip trip) {
         String message = tripService.saveTrip(trip);
-        return new ResponseEntity<>(message, HttpStatus.CREATED);
+        if (message.equals("Trip saved successfully")) {
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        } else if (message.equals("Driver is already on a trip on that date")){
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }else{
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
+       
     }
 
     @GetMapping("/all")
@@ -75,6 +83,17 @@ public class TripController {
         LocalDate startDate = LocalDate.parse(start);
         LocalDate endDate = LocalDate.parse(end);
         return new ResponseEntity<>(tripService.getTripsBetween(startDate, endDate), HttpStatus.OK );
+    }
+    @PatchMapping ("/{id}/status")
+    public ResponseEntity<String> changeStatus(@PathVariable UUID id, @RequestParam TripStatus status) {
+        String message = tripService.changeStatus(id,status);
+        if (message.equals("Trip status updated successfully")) {
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else if (message.equals("The trip with that id does not exist")) {
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

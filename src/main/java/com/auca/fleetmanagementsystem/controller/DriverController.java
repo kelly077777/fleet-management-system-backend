@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 @RestController 
 @RequestMapping ("/api/drivers")
@@ -71,5 +72,28 @@ public class DriverController {
     @GetMapping ("/by-license-class")
     public ResponseEntity<List<Driver>> getDriversByLicenseClass(@RequestParam String name){
         return new ResponseEntity<>(driverService.getDriversByLicenseClass(name), HttpStatus.OK);
+    }
+    @PutMapping ("/{driverId}/license-classes/{licenseClassId}")
+    public ResponseEntity<String> addLicenseClass(@PathVariable UUID driverId, @PathVariable UUID licenseClassId){
+        String message = driverService.addLicenseClassToDriver(driverId, licenseClassId);
+        if (message.equals("License class added to the driver")){
+            return new ResponseEntity<>(message,HttpStatus.OK);
+        }else if (message.equals("The driver already has that license class")){
+            return new ResponseEntity<>(message,HttpStatus.CONFLICT);
+        }else {
+            return new ResponseEntity<>(message,HttpStatus.NOT_FOUND);
+        }
+    } 
+
+    @PatchMapping  ("/{driverId}/vehicle")
+    public ResponseEntity<String> changeVehicle(@PathVariable UUID driverId, @RequestParam int fleetNumber){
+        String message = driverService.changeVehicle(driverId, fleetNumber);
+        if (message.equals("Vehicle changed successfully")){
+            return new ResponseEntity<>(message,HttpStatus.OK);
+        }else if (message.equals("That vehicle is taken by another driver")){
+            return new ResponseEntity<>(message,HttpStatus.CONFLICT);
+        }else {
+            return new ResponseEntity<>(message,HttpStatus.NOT_FOUND);
+        }
     }
 }

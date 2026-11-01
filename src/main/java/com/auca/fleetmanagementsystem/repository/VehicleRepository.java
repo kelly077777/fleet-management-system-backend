@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.Query;
 import java.util.List;
+import java.util.Optional;
 
 public interface VehicleRepository extends JpaRepository<Vehicle, UUID> {
     @Query("""
@@ -14,5 +15,6 @@ public interface VehicleRepository extends JpaRepository<Vehicle, UUID> {
         """)
 
     List<Vehicle> findFreeVehicles();
+    Optional<Vehicle> findByFleetNumber(int fleetNumber);
 }
 

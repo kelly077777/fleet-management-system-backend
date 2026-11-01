@@ -10,4 +10,5 @@ public interface TripRepository extends JpaRepository<Trip, UUID>{
     
     List<Trip> findByStatusOrderByTripDateAsc(TripStatus status);
     List<Trip> findByTripDateBetweenOrderByTripDateAsc(LocalDate start, LocalDate end);
+    boolean existsByDriverIdAndTripDateAndStatusNot(UUID driverId, LocalDate tripDate, TripStatus status);
 }

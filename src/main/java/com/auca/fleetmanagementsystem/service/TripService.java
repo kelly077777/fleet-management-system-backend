@@ -17,6 +17,13 @@ public class TripService {
     }
 
     public String saveTrip(Trip trip){
+        if (trip.getTripDate().isBefore(LocalDate.now())){
+            return "Trip date cannot be in the past";
+        }
+        if (trip.getDriver() != null && tripRepository.existsByDriverIdAndTripDateAndStatusNot(trip.getDriver().getId(), trip.getTripDate(), TripStatus.ABORTED)){
+            return "Driver is already on a trip on that date";
+        }
+        trip.setStatus(TripStatus.REQUESTED);
         tripRepository.save(trip);
         return "Trip saved successfully";
     }
@@ -34,7 +41,7 @@ public class TripService {
         }
         Trip trip = existing.get();
         trip.setTripDate(newData.getTripDate());
-        trip.setStatus(newData.getStatus());
+        
         trip.setOrigin(newData.getOrigin());
         trip.setDestination(newData.getDestination());
         trip.setCustomer(newData.getCustomer());
@@ -59,5 +66,25 @@ public class TripService {
     }
     public List<Trip> getTripsBetween(LocalDate start, LocalDate end){
         return tripRepository.findByTripDateBetweenOrderByTripDateAsc(start, end);
+    }
+    public String changeStatus(UUID id, TripStatus newStatus){
+        Optional<Trip> existing = tripRepository.findById(id);
+        if (existing.isEmpty()){
+            return "The trip with that id does not exist";
+        }
+        Trip trip = existing.get();
+        TripStatus current = trip.getStatus();
+        boolean allowed = false; 
+        if (current == TripStatus.REQUESTED){
+            allowed = newStatus == TripStatus.EN_ROUTE || newStatus == TripStatus.ABORTED;
+        }else if (current == TripStatus.EN_ROUTE){
+            allowed = newStatus == TripStatus.ARRIVED || newStatus == TripStatus.ABORTED;
+        }
+        if (!allowed){
+            return " Cannot change status from " + current + " to " + newStatus;
+        }
+        trip.setStatus(newStatus);
+        tripRepository.save(trip);
+        return "Trip status updated successfully";
     }
 }
