@@ -1,0 +1,1109 @@
+{
+  "info": {
+    "_postman_id": "bcc602cf-cf4f-4675-a712-2358fd5ce0bb",
+    "name": "fleet-management-system-midterm",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58382557"
+  },
+  "item": [
+    {
+      "name": "Seed License Class",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Class E\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/license-classes/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "license-classes",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Seed Vehicle",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/license-classes/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "license-classes",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "   Get all license classes",
+      "request": {
+        "auth": {
+          "type": "inherit"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/license-classes/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "license-classes",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Seed Driver",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"fistion\", \"lastName\": \"kwizera\", \"phone\": \"0788144443\", \"licenseNumber\": \"LN-1003\",\n  \"vehicle\": { \"id\": \"e130479a-294f-4b34-afa7-5f501926fde1\" },\n  \"licenseClasses\": [ { \"id\": \"58e16592-0da7-4070-9d59-c6d5b884ff03\" } ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/drivers/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "drivers",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all drivers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/drivers/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "drivers",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Seed Customer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"firstName\": \"gasana\", \"lastName\": \"joseph\", \"customerCode\": \"CUST-1005\", \"phone\": \"0788299991\", \"email\": \"fadhil@example.com\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/customers/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all customers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update customer",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"firstName\": \"fish\", \"lastName\": \"Nkurunziza\", \"customerCode\": \"CUST-1002\", \"phone\": \"0788299991\", \"email\": \"fish@example.com\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/customers/update/2df7d687-c104-48fa-9734-761f3efa0975",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "update",
+            "2df7d687-c104-48fa-9734-761f3efa0975"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Seed Trip",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"tripDate\": \"2026-11-20\", \"status\": \"ABORTED\", \"origin\": \"Kigali\", \"destination\": \"Kayonza\", \"customer\": { \"id\": \"5f8da043-741a-4304-aa8f-043c3d36e1af\" }, \"driver\": { \"id\": \"6e89679d-07d3-4c0f-ac68-530ce1af2fc6\" } }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/trips/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all trips",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "B1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/customers/by-last-name?lastName=nkurunziza",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "by-last-name"
+          ],
+          "query": [
+            {
+              "key": "lastName",
+              "value": "nkurunziza"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "B2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/by-status?status=REQUESTED",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "by-status"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "REQUESTED"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "B3",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/between?start=2026-10-01&end=2026-10-31",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "between"
+          ],
+          "query": [
+            {
+              "key": "start",
+              "value": "2026-10-01"
+            },
+            {
+              "key": "end",
+              "value": "2026-10-31"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "C1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/drivers/by-license-class?name=class b",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "drivers",
+            "by-license-class"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "class b"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "C2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/vehicles/free",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "vehicles",
+            "free"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "C3",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/license-classes/unused",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "license-classes",
+            "unused"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "C4",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/between?start=2026-10-01&end=2026-10-31",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "between"
+          ],
+          "query": [
+            {
+              "key": "start",
+              "value": "2026-10-01"
+            },
+            {
+              "key": "end",
+              "value": "2026-10-31"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "C4(404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/customers/of-driver/00000000-0000-0000-0000-000000000000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "of-driver",
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"tripDate\": \"2026-11-25\", \"status\": \"ARRIVED\", \"origin\": \"Kigali\", \"destination\": \"Gicumbi\", \"customer\": { \"id\": \"f3fb8e81-9edd-4e35-9ee9-164d5e47d8b0\" }, \"driver\": { \"id\": \"6e89679d-07d3-4c0f-ac68-530ce1af2fc6\" } }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/trips/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D1 (400)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"tripDate\": \"2026-10-01\", \"origin\": \"Kigali\", \"destination\": \"Gisenyi\", \"customer\": { \"id\": \"26f132d8-13af-4d3b-9f86-f5a0e61a5d23\" }, \"driver\": { \"id\": \"6b19ec4f-5818-452c-bfb0-7c64640c7195\" } }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/trips/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D1 (409)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"tripDate\": \"2026-11-10\", \"origin\": \"Kigali\", \"destination\": \"Ngoma\", \"customer\": { \"id\": \"5f8da043-741a-4304-aa8f-043c3d36e1af\" }, \"driver\": { \"id\": \"182d98d9-d503-43d6-b19d-ce99feb2dde9\" } }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/trips/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D2",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/de710383-2066-4b43-8e9e-b9cbb27b2098/status?status=EN_ROUTE",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "de710383-2066-4b43-8e9e-b9cbb27b2098",
+            "status"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "EN_ROUTE"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D2(400)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/b4636ff5-ab61-4c41-91db-4a59aac02224/status?status=REQUESTED",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "b4636ff5-ab61-4c41-91db-4a59aac02224",
+            "status"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "REQUESTED"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D2(404)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/00000000-0000-0000-0000-000000000000/status?status=EN_ROUTE",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "00000000-0000-0000-0000-000000000000",
+            "status"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "EN_ROUTE"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D3",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/drivers/6e89679d-07d3-4c0f-ac68-530ce1af2fc6/license-classes/c650e0fb-9c9a-4ae8-af0c-0b23aca19df3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "drivers",
+            "6e89679d-07d3-4c0f-ac68-530ce1af2fc6",
+            "license-classes",
+            "c650e0fb-9c9a-4ae8-af0c-0b23aca19df3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D3(409)",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/drivers/182d98d9-d503-43d6-b19d-ce99feb2dde9/license-classes/c650e0fb-9c9a-4ae8-af0c-0b23aca19df3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "drivers",
+            "182d98d9-d503-43d6-b19d-ce99feb2dde9",
+            "license-classes",
+            "c650e0fb-9c9a-4ae8-af0c-0b23aca19df3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D3(404)",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/drivers/182d98d9-d503-43d6-b19d-ce99feb2dde9/license-classes/00000000-0000-0000-0000-000000000000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "drivers",
+            "182d98d9-d503-43d6-b19d-ce99feb2dde9",
+            "license-classes",
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D4",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/drivers/6e89679d-07d3-4c0f-ac68-530ce1af2fc6/vehicle?fleetNumber=4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "drivers",
+            "6e89679d-07d3-4c0f-ac68-530ce1af2fc6",
+            "vehicle"
+          ],
+          "query": [
+            {
+              "key": "fleetNumber",
+              "value": "4"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D4(409)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/drivers/182d98d9-d503-43d6-b19d-ce99feb2dde9/vehicle?fleetNumber=2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "drivers",
+            "182d98d9-d503-43d6-b19d-ce99feb2dde9",
+            "vehicle"
+          ],
+          "query": [
+            {
+              "key": "fleetNumber",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "D4(404)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/drivers/182d98d9-d503-43d6-b19d-ce99feb2dde9/vehicle?fleetNumber=99",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "drivers",
+            "182d98d9-d503-43d6-b19d-ce99feb2dde9",
+            "vehicle"
+          ],
+          "query": [
+            {
+              "key": "fleetNumber",
+              "value": "99"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "  { \"expenseType\": \"Fuel\", \"note\": \"Filled the tank at Kabuga station\", \"amount\": 45000 }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/trip-expenses/save?tripId=b4636ff5-ab61-4c41-91db-4a59aac02224",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trip-expenses",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "tripId",
+              "value": "b4636ff5-ab61-4c41-91db-4a59aac02224"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E1 (second)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "  { \"expenseType\": \"Toll\", \"note\": \"Toll fee on the Huye road\", \"amount\": 2000 }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/trip-expenses/save?tripId=41881a96-62d6-4a5c-a3c8-4d7952148b4d",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trip-expenses",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "tripId",
+              "value": "41881a96-62d6-4a5c-a3c8-4d7952148b4d"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E1(400)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "  { \"expenseType\": \"Fuel\", \"note\": \"Trip not arrived yet\", \"amount\": 10000 }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/trip-expenses/save?tripId=ec7adb98-87dd-4b58-b302-8d13adaddd77",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trip-expenses",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "tripId",
+              "value": "ec7adb98-87dd-4b58-b302-8d13adaddd77"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E1(404)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "  { \"expenseType\": \"Fuel\", \"note\": \"Trip not arrived yet\", \"amount\": 10000 }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/trip-expenses/save?tripId=00000000-0000-0000-0000-000000000000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trip-expenses",
+            "save"
+          ],
+          "query": [
+            {
+              "key": "tripId",
+              "value": "00000000-0000-0000-0000-000000000000"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E3(409)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/delete/b4636ff5-ab61-4c41-91db-4a59aac02224",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "delete",
+            "b4636ff5-ab61-4c41-91db-4a59aac02224"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E3",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trip-expenses/delete/4baed094-a38e-433a-a1ae-8f03730f3f10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trip-expenses",
+            "delete",
+            "4baed094-a38e-433a-a1ae-8f03730f3f10"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E3(404)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trip-expenses/delete/00000000-0000-0000-0000-000000000000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trip-expenses",
+            "delete",
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "F1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/stats/by-status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "stats",
+            "by-status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "F2",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/cancel-day?driverId=182d98d9-d503-43d6-b19d-ce99feb2dde9&date=2026-10-20",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "cancel-day"
+          ],
+          "query": [
+            {
+              "key": "driverId",
+              "value": "182d98d9-d503-43d6-b19d-ce99feb2dde9"
+            },
+            {
+              "key": "date",
+              "value": "2026-10-20"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/b4636ff5-ab61-4c41-91db-4a59aac02224",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "b4636ff5-ab61-4c41-91db-4a59aac02224"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2(404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/trips/00000000-0000-0000-0000-000000000000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "trips",
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
