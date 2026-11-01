@@ -96,6 +96,18 @@ public class TripController {
         } else {
             return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
         }
+    } 
+    @GetMapping ("/stats/by-status")
+    public ResponseEntity<List<Object[]> >getTripCountByStatus(){
+        return new ResponseEntity<>(tripService.getTripCountByStatus(), HttpStatus.OK);
+    }
+    @PatchMapping ("/cancel-day")
+    public ResponseEntity<String> cancelDriverDay(@RequestParam UUID driverId, @RequestParam String date){
+        LocalDate day = LocalDate.parse(date);
+        String message = tripService.cancelDriverDay(driverId, day);
+        
+            return new ResponseEntity<>(message, HttpStatus.OK);
+       
     }
 
 }

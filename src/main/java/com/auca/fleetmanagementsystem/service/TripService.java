@@ -8,6 +8,7 @@ import java.util.UUID;
 import com.auca.fleetmanagementsystem.model.TripStatus;
 import java.time.LocalDate;
 import com.auca.fleetmanagementsystem.repository.TripExpenseRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service 
 
@@ -93,5 +94,16 @@ public class TripService {
         trip.setStatus(newStatus);
         tripRepository.save(trip);
         return "Trip status updated successfully";
+    }
+
+    public List<Object[]> getTripCountByStatus(){
+        return tripRepository.countTripsByStatus();
+    }
+    @Transactional 
+    public String cancelDriverDay(UUID driverId, LocalDate day){
+        int cancelled = tripRepository.cancelDriverTripsOnDay(
+            driverId, day, TripStatus.ABORTED, TripStatus.ARRIVED);
+
+         return cancelled +" trips cancelled";
     }
 }
